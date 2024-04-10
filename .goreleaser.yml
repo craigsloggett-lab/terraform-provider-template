@@ -46,5 +46,11 @@ changelog:
     - title: Bug Fixes
       regexp: ^.*?fix(\([[:word:]]+\))??!?:.+$
       order: 1
+    - title: Documentation
+      regexp: ^.*?docs(\([[:word:]]+\))??!?:.+$
+      order: 2
+    - title: CI
+      regexp: ^.*?ci(\([[:word:]]+\))??!?:.+$
+      order: 3
     - title: Others
       order: 999
