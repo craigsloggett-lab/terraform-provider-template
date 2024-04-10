@@ -1,0 +1,10 @@
+branches:
+  - main
+
+ci: false
+
+plugins:
+  - '@semantic-release/commit-analyzer'
+  - '@semantic-release/git'
+
+preset: conventionalcommits
