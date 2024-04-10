@@ -88,4 +88,3 @@ func New(version string) func() provider.Provider {
 		}
 	}
 }
-
