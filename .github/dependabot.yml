@@ -14,8 +14,3 @@ updates:
       interval: weekly
     commit-message:
       prefix: chore
-
-  - package-ecosystem: terraform
-    directory: /
-    schedule:
-      interval: weekly
