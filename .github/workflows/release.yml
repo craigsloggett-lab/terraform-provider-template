@@ -17,8 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
-        with:
-          persist-credentials: false
       - name: Generate Tag
         uses: cycjimmy/semantic-release-action@cb425203a562475bca039ba4dbf90c7f9ac790f4 # v4.1.0
         with:
@@ -27,7 +25,7 @@ jobs:
             @semantic-release/git@10.0.1
             conventional-changelog-conventionalcommits@7.0.2
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
   goreleaser:
     name: GoReleaser
     needs: tag
