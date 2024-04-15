@@ -12,9 +12,9 @@ Example function
 ## Example Usage
 
 ```terraform
-output "scaffolding_example_function" {
-  description = "Example use of the scaffolding_example function."
-  value       = provider::scaffolding::example_function("Example output.")
+output "template_example_function" {
+  description = "Example use of the example_function function."
+  value       = provider::template::example_function("example")
 }
 ```
 
