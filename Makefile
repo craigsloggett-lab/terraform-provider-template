@@ -3,7 +3,7 @@ CACHE         := $(PWD)/_cache
 GOPATH        := $(CACHE)/go
 PATH          := $(BIN):$(PATH)
 SHELL         := env PATH=$(PATH) GOPATH=$(GOPATH) /bin/sh
-PROVIDER_NAME := terraform-provider-github
+PROVIDER_NAME := terraform-provider-template
 
 os       ?= $(shell uname|tr A-Z a-z)
 ifeq ($(shell uname -m),x86_64)
