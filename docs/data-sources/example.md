@@ -1,5 +1,5 @@
 ---
-page_title: "template_example Data Source - Scaffolding"
+page_title: "template_example Data Source - GitHub"
 subcategory: ""
 description: |-
   Example data source

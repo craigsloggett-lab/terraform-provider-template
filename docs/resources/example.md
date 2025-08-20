@@ -1,5 +1,5 @@
 ---
-page_title: "template_example Resource - Scaffolding"
+page_title: "template_example Resource - GitHub"
 subcategory: ""
 description: |-
   Example resource
