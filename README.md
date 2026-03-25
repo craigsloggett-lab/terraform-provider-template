@@ -2,6 +2,18 @@
 
 A GitHub repository template for developing a new Terraform provider.
 
+## Usage
+
+The following files require your attention immediately after creating a
+repository from this template:
+
+- [ ] `.github/CODEOWNERS`
+- [ ] `.github/workflows/release.yml`
+- [ ] `go.mod`
+- [ ] `main.go`
+- [ ] `Makefile`
+- [ ] `README.md`
+
 ## Required Secrets
 
 The following secrets must be added to the GitHub repository:

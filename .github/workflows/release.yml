@@ -21,7 +21,10 @@ permissions:
 jobs:
   release:
     name: GitHub
-    if: github.event.workflow_run.conclusion == 'success'
+    # Prevent an initial run on repository creation using this template.
+    # Remove the repository check in repositories created from this template.
+    if: >-
+      github.event.workflow_run.conclusion == 'success' && github.repository == 'craigsloggett-lab/terraform-provider-template'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
 

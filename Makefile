@@ -1,4 +1,4 @@
-PROVIDER_NAME := terraform-provider-template
+PROVIDER_NAME := terraform-provider-template # Update this to match your provider name.
 BUILD_DIR     := .local/builds
 PLATFORMS     := linux/amd64 linux/arm64 darwin/amd64 darwin/arm64
 
@@ -19,7 +19,7 @@ clean:
 
 docs: install
 	go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate \
-		-rendered-provider-name "GitHub" >/dev/null
+		-rendered-provider-name "GitHub" >/dev/null # Update the rendered provider name.
 
 install:
 	go install ./...
