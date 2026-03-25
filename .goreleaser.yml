@@ -35,41 +35,7 @@ signs:
       - --detach-sign
       - ${artifact}
 release:
+  mode: append
   extra_files:
     - glob: terraform-registry-manifest.json
       name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
-changelog:
-  use: github
-  groups:
-    - title: Features
-      regexp: ^.*?feat(\([[:word:]]+\))??!?:.+$
-      order: 0
-    - title: Bug Fixes
-      regexp: ^.*?fix(\([[:word:]]+\))??!?:.+$
-      order: 1
-    - title: Performance
-      regexp: ^.*?perf(\([[:word:]]+\))??!?:.+$
-      order: 2
-    - title: Reverts
-      regexp: ^.*?revert(\([[:word:]]+\))??!?:.+$
-      order: 3
-    - title: Documentation
-      regexp: ^.*?docs(\([[:word:]]+\))??!?:.+$
-      order: 4
-    - title: Style
-      regexp: ^.*?style(\([[:word:]]+\))??!?:.+$
-      order: 5
-    - title: Tests
-      regexp: ^.*?test(\([[:word:]]+\))??!?:.+$
-      order: 6
-    - title: Build
-      regexp: ^.*?build(\([[:word:]]+\))??!?:.+$
-      order: 7
-    - title: CI
-      regexp: ^.*?ci(\([[:word:]]+\))??!?:.+$
-      order: 8
-    - title: Chores
-      regexp: ^.*?chore(\([[:word:]]+\))??!?:.+$
-      order: 9
-    - title: Others
-      order: 999
