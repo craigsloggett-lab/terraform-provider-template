@@ -1,5 +1,4 @@
 ---
-layout: ""
 page_title: "Template Provider"
 description: |-
   The Template provider provides resources to interact with the example API.
