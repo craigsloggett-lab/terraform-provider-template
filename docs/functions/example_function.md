@@ -1,5 +1,5 @@
 ---
-page_title: "example_function function - GitHub"
+page_title: "example_function function - Template"
 subcategory: ""
 description: |-
   Echoes given argument as result
