@@ -42,7 +42,7 @@ lint:
 # Update the rendered provider name.
 docs: install
 	go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs@$(TFPLUGINDOCS_VERSION) generate \
-		-rendered-provider-name "GitHub" >/dev/null
+		-rendered-provider-name "Template" >/dev/null
 
 test:
 	go test -race -count=1 ./...

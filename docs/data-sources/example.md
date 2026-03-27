@@ -1,5 +1,5 @@
 ---
-page_title: "template_example Data Source - GitHub"
+page_title: "template_example Data Source - Template"
 subcategory: ""
 description: |-
   Example data source
