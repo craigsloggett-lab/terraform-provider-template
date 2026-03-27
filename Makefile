@@ -1,8 +1,14 @@
-PROVIDER_NAME := terraform-provider-template # Update this to match your provider name.
-BUILD_DIR     := .local/builds
-PLATFORMS     := linux/amd64 linux/arm64 darwin/amd64 darwin/arm64
+# Update this to match your provider name.
+PROVIDER_NAME         := terraform-provider-template
+BUILD_DIR             := .local/builds
+PLATFORMS             := linux/amd64 linux/arm64 darwin/amd64 darwin/arm64
+GOLANGCI_LINT_VERSION := v2.11.3
+GOVULNCHECK_VERSION   := v1.1.4
+TFPLUGINDOCS_VERSION  := v0.24.0
 
-.PHONY: build clean docs install lint test
+.PHONY: all build clean docs format install lint test testacc update
+
+all: lint test build
 
 build:
 	@mkdir -p $(BUILD_DIR)
@@ -14,22 +20,39 @@ build:
 			go build -o $(BUILD_DIR)/$(PROVIDER_NAME)-$${os}-$${arch} .; \
 	done
 
-clean:
-	rm -rf .local/
-
-docs: install
-	go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate \
-		-rendered-provider-name "GitHub" >/dev/null # Update the rendered provider name.
-
 install:
 	go install ./...
 
+format:
+	go fmt ./...
+
 lint:
 	yamllint .
-	golangci-lint run
+	go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION) run ./...
+	actionlint
+	find . -type f -name '*.sh' \
+		-not -path './.git/*' \
+		-not -path './.local/*' \
+	| while IFS= read -r file; do shellcheck "$${file}"; done
 	go mod tidy
 	git diff --exit-code go.mod go.sum
-	govulncheck ./...
+	go run golang.org/x/vuln/cmd/govulncheck@$(GOVULNCHECK_VERSION) ./...
+	go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs@$(TFPLUGINDOCS_VERSION) validate 2>/dev/null
+
+# Update the rendered provider name.
+docs: install
+	go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs@$(TFPLUGINDOCS_VERSION) generate \
+		-rendered-provider-name "GitHub" >/dev/null
 
 test:
 	go test -race -count=1 ./...
+
+testacc: install
+	cd internal/provider && TF_ACC=1 go test -count=1 -v
+
+update:
+	go get -u
+	go mod tidy
+
+clean:
+	rm -rf .local/
