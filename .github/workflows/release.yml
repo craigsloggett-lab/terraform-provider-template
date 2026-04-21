@@ -21,6 +21,8 @@ permissions:
 jobs:
   release:
     name: GitHub
+    # yamllint disable rule:line-length
+    # ^ Remove this yamllint directive after using this template.
     # Prevent an initial run on repository creation using this template.
     # Remove the repository check in repositories created from this template.
     if: >-
